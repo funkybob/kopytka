@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.contrib.postgres.fields import HStoreField
 from django.core.exceptions import ValidationError
 from django.core.urlresolvers import reverse
@@ -81,7 +82,7 @@ class StyleSheet(models.Model):
         return reverse('kopytka:style-sheet', kwargs={'name': self.name})
 
     def clean(self):
-        compiler = Compiler()
+        compiler = Compiler(search_path=getattr(settings, 'SASS_SEARCH_PATHS', []))
         try:
             self.output = compiler.compile_string(self.source)
         except SassSyntaxError as e:
