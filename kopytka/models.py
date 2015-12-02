@@ -76,7 +76,7 @@ class StyleSheet(models.Model):
     output = models.TextField(blank=True, editable=False)
 
     def __str__(self):
-        return self.output
+        return self.name + '.css'
 
     def get_absolute_url(self):
         return reverse('kopytka:style-sheet', kwargs={'name': self.name})
