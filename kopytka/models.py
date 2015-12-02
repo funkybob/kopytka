@@ -52,6 +52,9 @@ class Page(models.Model):
                 return 'default.html'
             obj = obj.parent
 
+    def __getitem__(self, key):
+        return self.fragments[key]
+
 
 class Template(models.Model):
     name = models.CharField(max_length=500, unique=True)
