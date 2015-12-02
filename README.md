@@ -37,3 +37,6 @@ A modernised version of Gnocchi CMS
             url(r'', include('kopytka.urls', namespace='kopytka')),
         ]
     ```
+
+1. Optionally: Add `SASS_SEARCH_PATHS` setting
+   This tells the SASS compiler where to find files for `@import` directives.
