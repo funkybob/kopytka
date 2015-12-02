@@ -1,0 +1,10 @@
+.CodeMirror {
+    min-height: 10em;
+    height: auto;
+    border: solid rgb(204, 204, 204) 1px;
+}
+
+.CodeMirror .cm-toolbar {
+    border: solid rgb(204, 204, 204) 1px;
+    background-color: rgb(204, 204, 204);
+}
