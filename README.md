@@ -40,3 +40,6 @@ A modernised version of Gnocchi CMS
 
 1. Optionally: Add `SASS_SEARCH_PATHS` setting
    This tells the SASS compiler where to find files for `@import` directives.
+
+1. Extract [CodeMirror](http://codemirror.net) into `static/codemirror`
+   The Admin will use this for nicer editing.
