@@ -64,7 +64,6 @@ class StyleSheetAdmin(admin.ModelAdmin):
         }
         js = (
             'codemirror/lib/codemirror.js',
-            'codemirror/addon/mode/overlay.js',
             'codemirror/mode/css/css.js',
             'kopytka/js/editor.js',
             'kopytka/js/editor_stylesheet.js',
