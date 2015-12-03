@@ -1,5 +1,6 @@
 .CodeMirror {
     min-height: 10em;
+    max-height: calc(100vh - 4em);
     height: auto;
     border: solid rgb(204, 204, 204) 1px;
 }
