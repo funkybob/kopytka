@@ -1,12 +1,17 @@
 from django.contrib import admin
 
 from . import models
+from . import widgets
 
 
 class PageAdmin(admin.ModelAdmin):
     list_display = ('url', 'parent', 'order', 'template', 'is_published')
     list_filter = ('is_published',)
     ordering = ('parent', 'order',)
+
+    formfield_overrides = {
+        models.HStoreField: {'widget': widgets.HStoreWidget},
+    }
 
     class Media:
         css = {
