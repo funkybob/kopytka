@@ -26,13 +26,16 @@ class Page(models.Model):
 
     objects = managers.PageQuerySet.as_manager()
 
+    def __str__(self):
+        return '{} : {}'.format(self.url, self.title)
+
     class Meta:
         unique_together = (
             ('parent', 'path'),
         )
 
     def get_absolute_url(self):
-        paths = [self.path, ]
+        paths = [self.path]
         node = self.parent
         while node:
             paths.insert(0, node.path)
