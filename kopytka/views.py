@@ -1,7 +1,8 @@
-from django.http import Http404, HttpResponse
+from django.http import Http404, HttpResponse, JsonResponse
 from django.shortcuts import get_object_or_404, render
 
 from . import models
+from .auth import staff_required
 
 
 def page(request, path):
@@ -29,3 +30,13 @@ def style_sheet(request, name):
     sheet = get_object_or_404(models.StyleSheet, name=name)
 
     return HttpResponse(sheet.output, content_type='text/css')
+
+
+@staff_required
+def fragments(request):
+    '''
+    Provide a list of known Fragment names
+    '''
+    values = list(models.Page.objects.keys().distinct())
+
+    return JsonResponse({'keys': values})
