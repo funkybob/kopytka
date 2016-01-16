@@ -1,0 +1,2 @@
+recursive-include kopytka/static/kopytka/js *.js
+recursive-include kopytka/static/kopytka/css *.css
