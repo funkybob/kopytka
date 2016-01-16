@@ -37,6 +37,6 @@ def fragments(request):
     '''
     Provide a list of known Fragment names
     '''
-    values = list(models.Page.objects.keys().distinct())
+    values = list(models.Page.objects.fragment_keys().distinct())
 
     return JsonResponse({'keys': values})
