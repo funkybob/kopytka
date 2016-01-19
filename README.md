@@ -29,6 +29,7 @@ A modernised version of Gnocchi CMS
             },
         ]
     ```
+    You will also need to remove the `'APP_DIRS': True` option when specifying `loaders`.
 
 1. Add urls
     ```
