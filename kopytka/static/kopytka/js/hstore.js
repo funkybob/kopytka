@@ -1,4 +1,5 @@
 (function($) {
+    'use strict';
 
     function make_row(k, v) {
         k = k || '';
