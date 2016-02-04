@@ -4,7 +4,7 @@
     function make_row(k, v) {
         k = k || '';
         v = v || '';
-        return  '<tr class="form-row">' +
+        return  '<tr class="form-row"' + ((k === '') ? '' : ' data-value="' + v + '"') + '>' +
                     '<td><input type="text" value="' + k + '"></td>' +
                     '<td><textarea class="vLargeTextField">' + v + '</textarea></td>' +
                     '<td><a class="inline-deletelink">Delete</a></td>' +
@@ -42,6 +42,16 @@
             $el.find('.add-row a').on('click', function (ev) {
                 $container.append(make_row());
                 ev.preventDefault();
+            });
+
+            $container.on('click', '.inline-deletelink', function () {
+              var $el = $(this).closest('tr.form-row');
+              if($el.data('value')) {
+                // mark for deletion
+              } else {
+                // remove
+                $el.remove();
+              }
             });
 
             // hook into submit action
