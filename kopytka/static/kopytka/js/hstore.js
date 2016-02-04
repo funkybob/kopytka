@@ -17,7 +17,7 @@
             var $el = $field.parent();
 
             // parse the data - save the original
-            var data = JSON.parse($field.val());
+            var data = JSON.parse($field.val() || '{}');
             // hide the text area
             $field.hide();
 
