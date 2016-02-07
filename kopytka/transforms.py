@@ -1,5 +1,5 @@
-from django.db.models import CharField, Func
 from django.contrib.postgres.fields import ArrayField
+from django.db.models import CharField, Func
 
 
 class SKeys(Func):

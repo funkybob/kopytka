@@ -1,7 +1,6 @@
 from django.contrib import admin
 
-from . import models
-from . import widgets
+from . import models, widgets
 
 
 class PageAdmin(admin.ModelAdmin):
