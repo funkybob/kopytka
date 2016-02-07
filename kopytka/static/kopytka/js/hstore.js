@@ -7,7 +7,10 @@
         return  '<tr class="form-row"' + ((k === '') ? '' : ' data-value="' + encodeURIComponent(v) + '"') + '>' +
                     '<td><input type="text" value="' + k + '"></td>' +
                     '<td><textarea class="vLargeTextField">' + v + '</textarea></td>' +
-                    '<td><a class="inline-deletelink">Delete</a></td>' +
+                    '<td>' +
+                        '<a class="inline-deletelink">Delete</a>' +
+                        ((k === '') ? '' : '<a class="inline-undolink">Undo</a>') +
+                    '</td>' +
                 '</tr>' ;
     }
 
@@ -52,6 +55,12 @@
                 // remove
                 $el.remove();
               }
+            });
+
+            $container.on('click', '.inline-undolink', function () {
+                var $el = $(this).closest('tr.form-row'),
+                    value = decodeURIComponent($el.data('value'));
+                $el.find('textarea').val(value);
             });
 
             // hook into submit action
