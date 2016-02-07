@@ -4,7 +4,7 @@
     function make_row(k, v) {
         k = k || '';
         v = v || '';
-        return  '<tr class="form-row"' + ((k === '') ? '' : ' data-value="' + v + '"') + '>' +
+        return  '<tr class="form-row"' + ((k === '') ? '' : ' data-value="' + encodeURIComponent(v) + '"') + '>' +
                     '<td><input type="text" value="' + k + '"></td>' +
                     '<td><textarea class="vLargeTextField">' + v + '</textarea></td>' +
                     '<td><a class="inline-deletelink">Delete</a></td>' +
