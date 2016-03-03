@@ -9,4 +9,4 @@ class PageQuerySet(models.QuerySet):
         return self.filter(is_published=True)
 
     def fragment_keys(self):
-        return self.annotate(keys=SKeys('fragments')).values_list('keys', flat=True)
+        return self.annotate(keys=SKeys('fragments')).values_list('keys', flat=True).distinct()
