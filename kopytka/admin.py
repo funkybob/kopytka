@@ -58,6 +58,7 @@ admin.site.register(models.Template, TemplateAdmin)
 class StyleSheetAdmin(admin.ModelAdmin):
     list_display = ('name', 'description',)
     readonly_fields = ('output',)
+    save_on_top = True
 
     class Media:
         css = {
