@@ -21,11 +21,14 @@ A modernised version of Gnocchi CMS
             {
                 'BACKEND': 'django.template.backends.django.DjangoTemplates',
                 ...
-                'loaders': [
-                    'kopytka.loader.DBLoader',
-                    'django.template.loaders.filesystem.Loader',
-                    'django.template.loaders.app_directories.Loader',
-                ],
+                'OPTIONS': {
+                    ...
+                    'loaders': [
+                        'kopytka.loader.DBLoader',
+                        'django.template.loaders.filesystem.Loader',
+                        'django.template.loaders.app_directories.Loader',
+                    ],
+                },
             },
         ]
     ```
