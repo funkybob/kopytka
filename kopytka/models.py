@@ -77,6 +77,7 @@ class StyleSheet(models.Model):
     description = models.CharField(max_length=500, blank=True)
     source = models.TextField(blank=True)
     output = models.TextField(blank=True, editable=False)
+    minify = models.BooleanField(default=False)
 
     def __str__(self):
         return self.name + '.css'
@@ -85,8 +86,10 @@ class StyleSheet(models.Model):
         return reverse('kopytka:style-sheet', kwargs={'name': self.name})
 
     def clean(self):
-        compiler = Compiler(search_path=getattr(settings, 'SASS_SEARCH_PATHS', []))
+        compiler = Compiler(search_path=getattr(settings, 'SASS_SEARCH_PATHS', []),
+                            output_style='compressed' if self.minify else 'nested')
         try:
             self.output = compiler.compile_string(self.source)
-        except SassSyntaxError as e:
+        except (ValueError, SassSyntaxError) as e:
+            import traceback ; traceback.print_exc()
             raise ValidationError({'source': str(e)})
